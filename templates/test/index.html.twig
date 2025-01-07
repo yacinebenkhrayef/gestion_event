@@ -1,0 +1,37 @@
+{# templates/task/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des tâches{% endblock %}
+
+{% block body %}
+    <h1>Liste des tâches</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nom de la tâche</th>
+            <th>Collaboration</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.name }}</td>
+                <td>{{ task.collaboration.name }}</td>
+                <td>
+                    <a href="{{ path('task_show', {'id': task.id}) }}">Voir</a>
+                    <a href="{{ path('task_edit', {'id': task.id}) }}">Modifier</a>
+                    <form method="POST" action="{{ path('task_delete', {'id': task.id}) }}" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                        <button type="submit">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('task_new') }}">Créer une nouvelle tâche</a>
+{% endblock %}

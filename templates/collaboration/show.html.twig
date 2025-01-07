@@ -1,0 +1,33 @@
+{# templates/collaboration/show.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la collaboration{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="display-4">Détails de la collaboration: {{ collaboration.name }}</h1>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Description</h5>
+                <p class="card-text">{{ collaboration.details }}</p>
+            </div>
+        </div>
+
+        <h2 class="my-4">Participants</h2>
+        <div class="list-group">
+            {% for participant in collaboration.participants %}
+                <li class="list-group-item">
+                    <strong>{{ participant.firstName }} {{ participant.lastName }}</strong>
+                </li>
+            {% else %}
+                <li class="list-group-item">Aucun participant trouvé.</li>
+            {% endfor %}
+        </div>
+
+        <div class="mt-4">
+            <a href="{{ path('collaboration_index') }}" class="btn btn-primary">Retour à la liste des collaborations</a>
+        </div>
+    </div>
+{% endblock %}

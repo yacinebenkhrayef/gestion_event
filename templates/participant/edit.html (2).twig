@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un Participant{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Modifier le Participant</h1>
+
+        {# Formulaire de modification du participant #}
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+        {# Prénom, Nom et Numéro de téléphone avec un style Bootstrap #}
+        <div class="mb-3">
+            {{ form_label(form.firstName, 'Prénom', {'label_attr': {'class': 'form-label'}}) }}
+            <div class="input-group">
+                {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            {{ form_errors(form.firstName) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.lastName, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
+            <div class="input-group">
+                {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            {{ form_errors(form.lastName) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.phoneNumber, 'Numéro de téléphone', {'label_attr': {'class': 'form-label'}}) }}
+            <div class="input-group">
+                {{ form_widget(form.phoneNumber, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            {{ form_errors(form.phoneNumber) }}
+        </div>
+
+        {# Boutons de soumission et de retour avec des classes Bootstrap #}
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+            <a href="{{ path('participant_index') }}" class="btn btn-secondary">Retour à la liste</a>
+        </div>
+
+        {# Fin du formulaire #}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

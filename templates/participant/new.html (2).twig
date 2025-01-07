@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un Nouveau Participant{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Créer un Nouveau Participant</h1>
+
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Informations du Participant</h4>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    {{ form_label(form.firstName, 'Prénom', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.firstName) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_label(form.lastName, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.lastName) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_label(form.phoneNumber, 'Numéro de téléphone', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.phoneNumber, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.phoneNumber) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-primary btn-lg">Soumettre</button>
+            <a href="{{ path('participant_index') }}" class="btn btn-secondary btn-lg">Retour à la liste</a>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

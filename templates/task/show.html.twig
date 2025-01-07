@@ -1,0 +1,14 @@
+{# templates/task/show.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la Tâche{% endblock %}
+
+{% block body %}
+    <h1>Détails de la tâche</h1>
+
+    <p><strong>Nom :</strong> {{ task.name }}</p>
+    <p><strong>Collaboration :</strong> {{ task.collaboration.name }}</p>
+
+    <a href="{{ path('task_edit', {'id': task.id}) }}" class="btn btn-warning">Modifier</a>
+    <a href="{{ path('task_index') }}" class="btn btn-secondary">Retour à la liste</a>
+{% endblock %}

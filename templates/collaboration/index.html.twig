@@ -1,0 +1,39 @@
+{# templates/collaboration/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Collaborations{% endblock %}
+
+{% block body %}
+    <h1>Liste des Collaborations</h1>
+
+    <a href="{{ path('collaboration_new') }}" class="btn btn-primary">Créer une nouvelle collaboration</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Détails</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for collaboration in collaborations %}
+            <tr>
+                <td>{{ collaboration.id }}</td>
+                <td>{{ collaboration.name }}</td>
+                <td>{{ collaboration.details }}</td>
+                <td>
+                    <a href="{{ path('collaboration_show', {'id': collaboration.id}) }}" class="btn btn-info">Voir</a>
+                    <a href="{{ path('collaboration_edit', {'id': collaboration.id}) }}" class="btn btn-warning">Modifier</a>
+                    <form action="{{ path('collaboration_delete', {'id': collaboration.id}) }}" method="post" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ collaboration.id) }}">
+                        <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

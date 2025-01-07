@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du Participant{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Détails du Participant</h1>
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Informations du Participant</h4>
+            </div>
+            <div class="card-body">
+                <p><strong>Prénom :</strong> {{ participant.firstName }}</p>
+                <p><strong>Nom :</strong> {{ participant.lastName }}</p>
+                <p><strong>Numéro de téléphone :</strong> {{ participant.phoneNumber }}</p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="{{ path('participant_edit', {'id': participant.id}) }}" class="btn btn-warning btn-lg">Modifier</a>
+                <a href="{{ path('participant_index') }}" class="btn btn-secondary btn-lg">Retour à la liste</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

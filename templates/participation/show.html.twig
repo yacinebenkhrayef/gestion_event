@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la Participation{% endblock %}
+
+{% block body %}
+    <h1 class="mb-4 text-center text-info">Détails de la Participation</h1>
+
+    <div class="mb-3 text-end">
+        <a href="{{ path('participation_index') }}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Retour à la liste
+        </a>
+    </div>
+
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h5 class="card-title text-primary">Participant</h5>
+            <p class="card-text">{{ participation.participant.firstName }} {{ participation.participant.lastName }}</p>
+            <h5 class="card-title text-primary">Collaboration</h5>
+            <p class="card-text">{{ participation.collaboration.name }}</p>
+        </div>
+    </div>
+{% endblock %}

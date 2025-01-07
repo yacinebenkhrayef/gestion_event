@@ -1,0 +1,17 @@
+{# templates/task/new.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Tâche{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle tâche</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.collaboration) }}
+
+    <button type="submit" class="btn btn-primary">Créer</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('task_index') }}" class="btn btn-secondary">Retour à la liste</a>
+{% endblock %}
